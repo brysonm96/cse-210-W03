@@ -1,0 +1,61 @@
+from game.list import Secret
+from game.parachute import ParachuteGuy
+
+
+class Jumper:
+    
+    #Jumper attributes
+    def __init__(self):
+      self._list = Secret
+      self._guess = ""
+      self._reveal = list(len(self._list)*'_')
+      self._lives = 4
+      self._won = False
+      self._lose = False
+
+    def letter_check(self, letter, list):
+
+      for i in range(0,len(self._list)):
+          letter = self._list[i]
+          if self._guess == letter:
+              self._reveal[i] = self._guess
+      if '_' not in self._reveal:
+          return True
+      else:
+          return False
+
+    #uses the pictures of ParachuteGuy to display for game
+    def show(self):
+      print(ParachuteGuy[4 - self._lives])
+      print(self._reveal)
+
+    #loop for guessing letters
+    def process(self):
+      while self._won == False and self._lives > 0:
+          self.show()
+          self._guess = input('guess letter: ')
+          self._guess = self._guess.upper()
+          
+          if self._guess == self._list:
+              self._won = True
+              self._reaveal = self._list
+          if len(self._guess) == 1 and self._guess in self._list:
+              self._won = self.letter_check(self._guess, self._list)   
+          else:
+              self._lives-=1
+            #Secret word was guessed correctly and congratulations message displayed.
+          if self._won == True:
+              print(f"Congratulations! The word was {self._list}")
+              print("")
+          else:
+              print("That letter was inccorect, try again.")
+              print(" ")
+
+          if self._lives == 0:
+              self._lose = True
+            #Game over message and secret word is dissplayed
+          if self._lose == True:
+              print(ParachuteGuy[4])
+              print("__Game Over__")
+              self._lost = False
+              print("The word was ",self._list)
