@@ -1,0 +1,32 @@
+#import other codes
+from game.jumper import Jumper
+from game.list import Secret
+from game.terminal_service import TerminalService
+
+
+#directs the game through start, inputs, updates, and outputs
+class Director:
+
+
+    def __init__(self):
+        self._keep_playing = True
+        self._terminal_service = TerminalService()
+        self._jumper = Jumper()
+        self._list = Secret
+
+    def start_game(self):
+
+        while self._keep_playing:
+            self.get_inputs()
+            self.do_updates()
+            self.do_outputs()
+
+    def get_inputs(self):
+        self._list
+
+    def do_updates(self):
+        
+        self._jumper.process()
+
+    def do_outputs(self):
+        pass
