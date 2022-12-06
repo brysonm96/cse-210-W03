@@ -2,5 +2,5 @@
 import random
 list = ["apple", "rexburg", "pizza", "python", "school", "jewel", "engine"
 ,"nose","tissue","force","increase","pie","develop","suburb","pause"
-, "heart","number","critic","annual","queen","joint","cinvince"]
+, "heart","number","critic","annual","queen","joint","convince"]
 Secret = random.choice(list).upper()
